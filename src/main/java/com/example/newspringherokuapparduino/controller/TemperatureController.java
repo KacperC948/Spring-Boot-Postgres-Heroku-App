@@ -2,6 +2,8 @@ package com.example.newspringherokuapparduino.controller;
 
 import com.example.newspringherokuapparduino.model.Temperature;
 import com.example.newspringherokuapparduino.service.TemperatureService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -13,6 +15,8 @@ import java.util.Date;
 public class TemperatureController {
     @Autowired
     private TemperatureService temperatureService;
+
+    Logger logger = LoggerFactory.getLogger(TemperatureController.class);
 
     @PostMapping("/add")
     @ResponseBody
@@ -27,6 +31,7 @@ public class TemperatureController {
         temperature1.setTemperature(temperature);
         temperature1.setDate(date);
         temperatureService.saveTemperature(temperature1);
+        logger.info("IP ADDRESS: " + request.getRemoteAddr());
         return "New temperature is added";
     }
 }
