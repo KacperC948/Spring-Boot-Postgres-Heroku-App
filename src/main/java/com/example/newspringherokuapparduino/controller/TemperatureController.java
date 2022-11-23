@@ -18,6 +18,7 @@ public class TemperatureController {
 
     Logger logger = LoggerFactory.getLogger(TemperatureController.class);
     //comment
+    //123
     @PostMapping("/add")
     @ResponseBody
     public String add(@RequestParam(name = "temperature") float temperature, @Autowired HttpServletRequest request){
